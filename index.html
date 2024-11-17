@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/style.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./public/1718492516663.jpg"
+    />
+    <title>Portfolio</title>
+  </head>
+  <body>
+    <main id="root">
+      <nav>
+        <section id="profile">
+          <article id="profile-pic">
+            <img
+              src="./public/1718492516663.jpg"
+              alt="Profile Image"
+            />
+          </article>
+        </section>
+        <section id="nav-links">
+          <ul>
+            <a itemref="home">
+              <li>Home</li>
+            </a>
+            <a itemref="about">
+              <li>About Me</li>
+            </a>
+            <a itemref="projects">
+              <li>Projects</li>
+            </a>
+            <a itemref="contact">
+              <li>Contact Me</li>
+            </a>
+          </ul>
+        </section>
+        <button
+          id="menu-button"
+          onclick="toggleMenu()"
+        >
+          =
+        </button>
+      </nav>
+      <section id="main-content">
+        <section
+          class="content"
+          id="home"
+        >
+          <article id="greeting">
+            <h1>Hi, I'm Andrew Grant</h1>
+            <h2>Web Developer</h2>
+            <button onclick="scrollToContact()">Contact Me</button>
+          </article>
+        </section>
+        <section
+          class="content"
+          id="about"
+        >
+          <article id="about-content">
+            <h1>About Me</h1>
+            <p>
+              I am a Web developer with experience in taking UI designs and
+              customer requirements to create responsive websites. I have skills
+              in front-end and back-end development using Node/ExpressJS,
+              MongoDB, and React/Redux. I also have experience analyzing data
+              using Python, Tableau, and SQL to create insightful reports.
+            </p>
+            <a
+              target="_blank"
+              href="https://drive.google.com/file/d/15617e7vb2k5fLtdsBL9CjxAMyG83oOVU/view?usp=sharing"
+              ><button>Resume</button></a
+            >
+          </article>
+        </section>
+        <section
+          class="content"
+          id="projects"
+        >
+          <section id="projects-content">
+            <h1>Projects</h1>
+            <ul id="project-list">
+              <a
+                href="https://single-maximizer.onrender.com/"
+                target="_blank"
+              >
+                <li class="web-card">
+                  <div class="web-preview">
+                    <img
+                      src="public/singleMaxDesktop.png"
+                      alt="single-maximizer"
+                    />
+                  </div>
+                  <p>Single Maximizer - Demo</p>
+                  <p>React, Node, Express, MongoDB</p>
+                </li>
+              </a>
+              <a
+                href="https://camp8distrohouse.com/"
+                target="_blank"
+              >
+                <li class="web-card">
+                  <div class="web-preview">
+                    <img
+                      src="public\Camp8Preview.png"
+                      alt="Camp8"
+                    />
+                  </div>
+                  <p>camp8distrohouse</p>
+                  <p>WordPress, CSS</p>
+                </li>
+              </a>
+              <a
+                href="https://andrewg117.github.io/SpeedReader/"
+                target="_blank"
+              >
+                <li class="web-card">
+                  <div class="web-preview">
+                    <img
+                      src="https://raw.githubusercontent.com/andrewg117/SpeedReader/refs/heads/main/speedReaderPreview.JPG"
+                      alt="SpeedReader"
+                    />
+                  </div>
+                  <p>SpeedReader</p>
+                  <p>React, SCSS, HTML</p>
+                </li>
+              </a>
+            </ul>
+          </section>
+        </section>
+        <section
+          class="content"
+          id="contact"
+        >
+          <article id="contact-content">
+            <h1>Contact Me</h1>
+            <ul>
+              <li>
+                <a
+                  target="_blank"
+                  href="mailto:andrewjgrant7@gmail.com"
+                  ><i class="fa-solid fa-envelope"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/andrewg117"
+                  ><i class="fa-brands fa-github-square"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.linkedin.com/in/andrew-grant-16a369120/"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </main>
+    <div id="totopbutton">
+      <a onclick="backToTop()"><button>^</button></a>
+    </div>
+    <script defer>
+      // Toggle menu on navigation click
+      function toggleMenuOnNavClick() {
+        document.getElementById("root").classList.remove("menu-on");
+      }
+
+      // Toggle menu
+      function toggleMenu() {
+        document.getElementById("root").classList.toggle("menu-on");
+        document.getElementById("nav-links").classList.remove("hidden");
+      }
+
+      function scrollToContact() {
+        document.getElementById("contact").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      function backToTop() {
+        document.getElementById("home").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".content");
+        const navLinks = document.querySelectorAll("#nav-links a");
+
+        const totopbutton = document.querySelector("#totopbutton");
+        totopbutton.classList.add("hidden");
+        const mainContent = document.querySelector("#main-content");
+        
+        // Close menu on click
+        navLinks.forEach((link) => {
+          if (link.getAttribute("itemref") === "home") {
+            link.classList.add("active-link");
+          }
+          link.addEventListener("click", () => {
+            sections.forEach((section) => {
+              if (section.getAttribute("id") === link.getAttribute("itemref")) {
+                section.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            });
+            toggleMenuOnNavClick();
+          });
+        });
+
+        // Main content scroll functions
+        mainContent.addEventListener("scroll", () => {
+          // Select menu links on scroll
+          let current = "home";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const pageYOffset = mainContent.scrollTop;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active-link");
+            if (link.getAttribute("itemref") === `${current}`) {
+              link.classList.add("active-link");
+            } else {
+              link.classList.remove("active-link");
+            }
+          });
+
+          // Scroll to top button
+          if (mainContent.scrollTop <= 500) {
+            totopbutton.classList.add("hidden");
+          } else {
+            totopbutton.classList.remove("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
