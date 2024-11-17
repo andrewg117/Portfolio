@@ -59,6 +59,7 @@ nav {
 #nav-links li {
   cursor: pointer;
   padding: 1em 0;
+  font-size: 1.5em;
 }
 
 #nav-links a {
@@ -112,11 +113,11 @@ nav {
 }
 
 .content h1 {
-  font-size: 3em;
+  font-size: 4em;
 }
 
 .content h2 {
-  font-size: 2em;
+  font-size: 3em;
 }
 
 #greeting {
@@ -133,7 +134,7 @@ nav {
 }
 
 #about-content p {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 #about-content iframe {
@@ -234,7 +235,7 @@ nav {
 }
 
 #contact-content li {
-  padding: 0 2em;
+  padding: 2em;
 }
 
 #contact-content a {
@@ -299,6 +300,59 @@ button:hover {
     grid-auto-flow: column;
     align-items: space-between;
     width: 100%;
+  }
+
+  #profile-pic img {
+    width: 80%;
+    height: auto;
+  }
+
+  #menu-button {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+
+  .menu-on {
+    /* grid-template-columns: 100%; */
+    grid-template-rows: 100% 0% !important;
+  }
+
+  .menu-open {
+    display: grid !important;
+  }
+
+  .content h1 {
+    font-size: 3em;
+  }
+
+  .content h2 {
+    font-size: 2em;
+  }
+
+  #about-content p {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-height: 900px) and (min-width: 768px) {
+  #root {
+    grid-template-columns: 100%;
+    grid-template-rows: 0% 100%;
+  }
+
+  nav {
+    grid-template-columns: 30% 70% !important;
+    grid-template-rows: 100% !important;
+    grid-auto-flow: row;
+    place-items: center;
+    place-content: center;
+    width: 100%;
+  }
+
+  #profile {
+    place-self: center;
   }
 
   #profile-pic img {
