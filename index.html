@@ -104,7 +104,7 @@
                       alt="single-maximizer"
                     />
                   </div>
-                  <p>Single Maximizer - Demo</p>
+                  <h3>Single Maximizer - Demo</h3>
                   <p>React, Node, Express, MongoDB</p>
                 </li>
               </a>
@@ -119,7 +119,7 @@
                       alt="Camp8"
                     />
                   </div>
-                  <p>camp8distrohouse</p>
+                  <h3>camp8distrohouse</h3>
                   <p>WordPress, CSS</p>
                 </li>
               </a>
@@ -134,7 +134,7 @@
                       alt="SpeedReader"
                     />
                   </div>
-                  <p>SpeedReader</p>
+                  <h3>SpeedReader</h3>
                   <p>React, SCSS, HTML</p>
                 </li>
               </a>
@@ -208,7 +208,21 @@
         const totopbutton = document.querySelector("#totopbutton");
         totopbutton.classList.add("hidden");
         const mainContent = document.querySelector("#main-content");
-        
+
+        const webCard = document.querySelectorAll(".web-card");
+
+        // Hover on web cards
+        webCard.forEach((card) => {
+          card.addEventListener("mouseover", () => {
+            card.getElementsByClassName("web-preview")[0].classList.add("show-preview");
+          });
+          card.addEventListener("mouseout", () => {
+            card
+              .getElementsByClassName("web-preview")[0]
+              .classList.remove("show-preview");
+          });
+        });
+
         // Close menu on click
         navLinks.forEach((link) => {
           if (link.getAttribute("itemref") === "home") {
