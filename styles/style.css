@@ -7,7 +7,7 @@
 
   --primary-color: rgb(0, 145, 255);
   /* --primary-color: rgb(218, 131, 0); */
-  --secondary-color: rgb(234, 160, 49);
+  --secondary-color: rgb(22, 28, 46);
 }
 
 #root {
@@ -20,7 +20,7 @@
 
 nav {
   display: grid;
-  background-color: black;
+  background-color: var(--secondary-color);
   color: white;
   grid-template-rows: 10% 80% 10%;
   /* padding: 10px; */
@@ -110,6 +110,7 @@ nav {
   width: 80%;
   padding: 0;
   text-align: center;
+  overflow: auto;
 }
 
 .content h1 {
@@ -157,7 +158,7 @@ nav {
 
 #projects-content ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   place-content: space-evenly;
   place-items: center;
   gap: 2em;
@@ -172,9 +173,9 @@ nav {
   place-items: center;
   gap: 1em;
   width: 100%;
-  width: 300px;
+  width: 400px;
   min-width: 250px;
-  background-color: black;
+  background-color: var(--secondary-color);
   border-radius: 5px;
   padding: 0.4em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -185,7 +186,7 @@ nav {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: box-shadow 0.6s ease;
   position: sticky;
-  width: 320px;
+  width: 420px;
   height: 280px;
   transition: width 0.6s ease, height 0.3s ease;
 }
@@ -241,12 +242,12 @@ nav {
 #contact-content a {
   font-size: 1.2em;
   text-decoration: none;
-  color: black;
+  color: var(--secondary-color);
   transition: color 0.6s ease;
 }
 
 #contact-content i {
-  color: black;
+  color: var(--secondary-color);
   font-size: 2em;
   transition: color 0.6s ease;
 }
@@ -289,7 +290,18 @@ button:hover {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-height: 700px)  {
+  #profile {
+    display: none;
+  }
+
+  nav {
+    grid-template-rows: 100% !important;
+  }
+  
+}
+
+@media screen and (max-width: 900px) and (orientation: portrait) {
   #root {
     grid-template-columns: 100%;
     grid-template-rows: 0% 100%;
@@ -323,6 +335,11 @@ button:hover {
     display: grid !important;
   }
 
+  .content {
+    width: 100%;
+    padding: 1em 0.5em;
+  }
+
   .content h1 {
     font-size: 3em;
   }
@@ -334,16 +351,25 @@ button:hover {
   #about-content p {
     font-size: 1.5em;
   }
+
+  #projects-content ul {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .web-card {
+    width: 300px;
+    min-width: 300px;
+  }
 }
 
-@media screen and (max-height: 900px) and (min-width: 768px) {
+@media screen and (max-height: 900px) and (orientation: landscape) {
   #root {
     grid-template-columns: 100%;
     grid-template-rows: 0% 100%;
   }
 
   nav {
-    grid-template-columns: 30% 70% !important;
+    grid-template-columns: 100% !important;
     grid-template-rows: 100% !important;
     grid-auto-flow: row;
     place-items: center;
@@ -352,12 +378,12 @@ button:hover {
   }
 
   #profile {
-    place-self: center;
+    display: none;
   }
 
-  #profile-pic img {
-    width: 80%;
-    height: auto;
+  #nav-links ul {
+    flex-direction: row !important;
+    gap: 2em;
   }
 
   #menu-button {
@@ -374,5 +400,9 @@ button:hover {
 
   .menu-open {
     display: grid !important;
+  }
+
+  .web-preview {
+    display: none;
   }
 }
